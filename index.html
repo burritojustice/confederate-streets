@@ -54,8 +54,7 @@
     <div id="map"></div>
 	<div id="label" style="text-align: center; color: red" >
 		<p id="text">An incomplete map of the streets (red dots) and things (blue dots) named after Robert E. Lee.<br>
-		<br>At zoom 14, colored lines show streets named after other Confederates who rebelled with Lee against the United States. <br>
-		<br>See <a href='https://mapzen.com/tangram/play/?api=22%2F663&lines=26-91#15.6123/32.4624/-93.6545'>how it was made</a>.</p>
+		<br>Zoom in to level 14: colored lines show streets named after other Confederates who rebelled with Lee against the United States.</p>
 	</div>   
 	<script>
       var map = L.Mapzen.map('map', {
@@ -69,7 +68,7 @@
       L.Mapzen.hash({
             map: map
       });
-	var geocoder = L.Mapzen.geocoder(mapzen-ojDtb4R, geocoderOptions);
+	var geocoder = L.Mapzen.geocoder('mapzen-ojDtb4R', geocoderOptions);
 	var geocoderOptions = {
     		position: 'bottomleft'
 		};	
