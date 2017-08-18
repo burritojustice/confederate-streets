@@ -36,6 +36,7 @@
             font: 12px arial;
             text-shadow: 2px 2px #FFFFFF;
             display: table;
+	    padding: 20px
         }
         #label p {
             display: table-cell;
@@ -53,7 +54,7 @@
     <div id="map"></div>
 	<div id="label" style="text-align: center; color: red" >
 		<p id="text">An incomplete map of the streets (red dots) and things (blue dots) named after Robert E. Lee.<br>
-		Zoom in to see colored lines indicating streets named after other Confederates who rebelled with Lee against the United States."</p>
+		<br>Zoom in to see colored lines indicating streets named after other Confederates who rebelled with Lee against the United States."</p>
 	</div>   
 <script>
       var map = L.Mapzen.map('map', {
