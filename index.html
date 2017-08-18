@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Conferate Streets</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://mapzen.com/js/mapzen.css" />
+    <script src="https://mapzen.com/js/mapzen.min.js"></script>
+    <style>
+      html, body { margin: 0; padding: 0; }
+      #map { height: 100%; width: 100%; position: absolute; }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script>
+      var map = L.Mapzen.map('map', {
+        center: [37.709, -99.348],
+        zoom: 5.054,
+        tangramOptions: {
+          scene: 'https://mapzen.com/api/scenes/22/663/resources/scene.yaml'
+        }
+       L.Mapzen.bug({
+            name: 'Confederate streets and places',
+            description: 'Below is an incomplete map showing some of the streets (red dots) and things (blue dots) named after Robert E. Lee. It may not surprise you that if a road is named after him, other nearby streets are often named after Confederates. Zoom in to see colored lines indicating streets named after those who rebelled against the United States.'
+        });
+      });
+    </script>
+  </body>
+</html>
