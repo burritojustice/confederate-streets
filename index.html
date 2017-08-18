@@ -71,8 +71,13 @@
 //       });
       L.Mapzen.hash({
             map: map
-      });    
-
+      });
+	var geocoder = L.Mapzen.geocoder();
+	var geocoderOptions = {
+    		position: 'bottomleft'
+		};	
+	geocoder.addTo(map);	
+    	
         map.on('zoom', function(e) {
             document.getElementById("label").style.visibility = "hidden"
         })
