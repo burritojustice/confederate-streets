@@ -54,9 +54,9 @@
     <div id="map"></div>
 	<div id="label" style="text-align: center; color: red" >
 		<p id="text">An incomplete map of the streets (red dots) and things (blue dots) named after Robert E. Lee.<br>
-		<br>Zoom in to see colored lines indicating streets named after other Confederates who rebelled with Lee against the United States.</p>
+		<br>Zoom in: colored lines indicate streets named after other Confederates who rebelled with Lee against the United States.</p>
 	</div>   
-  <script>
+	<script>
       var map = L.Mapzen.map('map', {
         center: [37.709, -99.348],
         zoom: 5.054,
@@ -78,6 +78,7 @@
         })
         map.on('move', function(e) {
             document.getElementById("label").style.visibility = "hidden"
+        })
 	</script>
   </body>
 </html>
