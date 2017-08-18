@@ -8,11 +8,26 @@
     <style>
       html, body { margin: 0; padding: 0; }
       #map { height: 100%; width: 100%; position: absolute; }
+	#label {
+		width: 50%;
+		height: 120px;
+		position: absolute;
+		top: 0;
+		left: 25%;
+		z-index: 2;
+		opacity: 0.7; 
+		background-color: white;
+		font: 12px arial;
+		}
     </style>
   </head>
   <body>
     <div id="map"></div>
-    <script>
+	<div id="label" style="text-align: center; " >
+			<p>Confederate Streets</p>
+			<p id="text">an incomplete map showing some of the streets (red dots) and things (blue dots) named after Robert E. Lee. It may not surprise you that if a road is named after him, other nearby streets are often named after Confederates. Zoom in to see colored lines indicating streets named after those who rebelled against the United States."</p></p>
+	</div>   
+<script>
       var map = L.Mapzen.map('map', {
         center: [37.709, -99.348],
         zoom: 5.054,
@@ -20,10 +35,11 @@
           scene: 'https://mapzen.com/api/scenes/22/663/resources/scene.yaml'
         }
       });
-      L.Mapzen.bug({
-        name: 'Confederate streets and places',
-        description: 'Below is an incomplete map showing some of the streets (red dots) and things (blue dots) named after Robert E. Lee. It may not surprise you that if a road is named after him, other nearby streets are often named after Confederates. Zoom in to see colored lines indicating streets named after those who rebelled against the United States.'
-      });
+//       L.Mapzen.bug({
+//         name: 'Confederate streets and places',
+// 	tweet: 'street and places named after those who rebelled against the United States. https://burritojustice.github.io/confederate-streets/index.html',
+//         description: 'Below is an incomplete map showing some of the streets (red dots) and things (blue dots) named after Robert E. Lee. It may not surprise you that if a road is named after him, other nearby streets are often named after Confederates. Zoom in to see colored lines indicating streets named after those who rebelled against the United States.'
+//       });
       L.Mapzen.hash({
             map: map
       });    </script>
