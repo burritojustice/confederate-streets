@@ -24,7 +24,8 @@ Sometimes streets are named for both Confederate and Union generals.
 
 - [Battlefied, MO](https://burritojustice.github.io/confederate-streets/index.html#lat=37.11232&lng=-93.37270&z=16.9219)
 
-- [Catoosca County, GA](https://burritojustice.github.io/confederate-streets/index.html#lat=34.92622&lng=-85.16206&z=17.0927)
+
+- [Catoosca County, GA] features Grant and Lee in a subdivision-sized battle. (https://burritojustice.github.io/confederate-streets/index.html#lat=34.92622&lng=-85.16206&z=17.0927)
 
 - (A few miles away in [Fort Oglethrope, GA](https://burritojustice.github.io/confederate-streets/index.html#lat=34.9471&lng=-85.2507&z=15.6594), it's a confederate namespace.)
 
