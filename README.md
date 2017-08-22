@@ -4,7 +4,11 @@ https://burritojustice.github.io/confederate-streets/index.html
 
 Uses Mapzen Search to find the extent of street names and points of interest (POIs) named after Robert E. Lee. These serve as a signal for other streets named after confederates. (These first appear at zoom 14.) 
 
-Data is from OpenStreetMap, via Mapzen Search. While Mapzen Search returns a maximum of 40 results per query, this gave a good impression of distribution (through southern U.S.) but it was obviously not exhaustive. I ran a second set of queries for streets and venues for each southern state for more detailed coverage.
+Red dots are streets, blue are POIs. Green circles indicate data from the [Southern Poverty Law Center](https://splcenter.carto.com/datasets).
+
+Red and blue dots are from OpenStreetMap, via Mapzen Search. While Mapzen Search returns a maximum of 40 results per query, this gave a good impression of distribution (through the southern U.S.) but it was obviously not exhaustive. I ran a second set of queries for streets and venues for each southern state for more detailed coverage.
+
+The confidence scores from Mapzen Search were very helpful. In general, results above `0.67` were meaningful.
 
 If a street is named after Robert E. Lee, there is a significant chance that nearby streets names are also named after confederates.
 
@@ -32,6 +36,7 @@ Sometimes streets are named for both Confederate and Union generals.
 There are some surprising outliers.
 
 - [Santa Clarita, CA](https://burritojustice.github.io/confederate-streets/index.html#lat=34.39948&lng=-118.48957&z=16.9219) (north of Los Angeles)
+- [Brooklyn](https://burritojustice.github.io/confederate-streets/index.html#lat=40.6091&lng=-74.0310&z=15.9715)
 
 regex logic and map styling is here:
 
