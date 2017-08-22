@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://mapzen.com/js/mapzen.css" />
     <script src="https://mapzen.com/js/mapzen.min.js"></script>
+    <script src="demo-switcher.js"></script>
+
     <style>
         html,
         body {
@@ -20,6 +22,22 @@
             position: absolute;
         }
 
+	#list {
+            text-align: center;
+            bottom: 0%;
+            height: 10%;
+            width: 30%;
+            left: 35%;
+            position: absolute;
+            margin: 0 auto;
+            z-index: 1000;
+            opacity: 0.7;
+            background-color: white;
+            font: 12px arial;
+            text-shadow: 2px 2px #FFFFFF;
+            display: table;
+            padding: 30px
+        }
 
         #label {
             text-align: center;
@@ -59,7 +77,80 @@
             <br>Zoom in to level 14: colored lines show streets named after other Confederates who rebelled with Lee against the United States.<br>
 	    <br>(Street name and POI dots via Mapzen Search. Street name highlights via Mapzen Vector Tiles, Tangram, and regex.)</p>
     </div>
+	<div id="list">
+	</div>
     <script>
+	var locations = [
+		{
+			name: 'Southgate Estates, Lafayette, Louisiana',
+			title: 'Lafayette, LA',
+			index: 0,
+			zoom: 15.7,
+			latlng: {
+			    lat: 32.4613,
+			    lng: -93.6509
+                	},
+			url: 'https://burritojustice.github.io/confederate-streets/index.html#lat=32.4613&lng=-93.6509&z=15.7011',
+			more: '' 
+            	},
+		{
+			name: 'Pine Valley Estates, Wilmington, NC',
+			title: 'Wilmington, NC',
+			index: 1,
+			zoom: 15.275,
+			latlng: {
+			    lat: 34.1881,
+			    lng: -77.8959
+                	},
+			url: 'https://burritojustice.github.io/confederate-streets/index.html#lat=34.1881&lng=-77.8959&z=15.2750'
+            	},	
+		{
+			name: 'Stanley, NC',
+			title: 'Stanley, NC',
+			index: 2,
+			zoom: 16.0844,
+			latlng: {
+			    lat: 35.34578,
+			    lng: -81.08881
+                	},
+			url: 'https://burritojustice.github.io/confederate-streets/index.html#lat=35.34578&lng=-81.08881&z=16.0844'
+            	},
+		{
+			name: 'Alexandria, VA',
+			title: 'Alexandria, VA',
+			index: 3,
+			zoom: 12.0386,
+			latlng: {
+			    lat: 38.8271,
+			    lng: -77.0651
+                	},
+			url: 'https://burritojustice.github.io/confederate-streets/index.html#lat=38.8271&lng=-77.0651&z=12.0386'
+            	},
+		{
+			name: 'Erlanger, KY',
+			title: 'Erlanger, KY',
+			index: 4,
+			zoom: 16.07,
+			latlng: {
+			    lat: 39.05277,
+			    lng: -84.61434
+                	},
+			url: 'https://burritojustice.github.io/confederate-streets/index.html#lat=39.05277&lng=-84.61434&z=16.0677'
+            	},
+		{
+			name: 'Forest Hills, TN',
+			title: 'Forest Hills, TN',
+			index: 5,
+			zoom: 15.192,
+			latlng: {
+			    lat: 36.0652,
+			    lng: -86.8140
+                	},
+			url: 'https://burritojustice.github.io/confederate-streets/index.html#lat=36.0652&lng=-86.8140&z=15.192'
+            	},	
+	]
+	    
+	    
         var map = L.Mapzen.map('map', {
             center: [37.709, -99.348],
             zoom: 5.054,
