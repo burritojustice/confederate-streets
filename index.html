@@ -77,8 +77,13 @@
             <br>Zoom in to level 14: colored lines show streets named after other Confederates who rebelled with Lee against the United States.<br>
 	    <br>(Street name and POI dots via Mapzen Search. Street name highlights via Mapzen Vector Tiles, Tangram, and regex.)</p>
     </div>
-	<div id="list">
-	</div>
+    <div class="demo-controls" id="demo-controls">
+        <div class="demo-control-previous"><i class="fa fa-fw fa-angle-left"></i></div>
+        <ul class="demo-control-list" id="location-list">
+        </ul>
+        <div class="demo-control-next"><i class="fa fa-fw fa-angle-right"></i></div>
+    </div>
+	
     <script>
 	var locations = [
 		{
