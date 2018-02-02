@@ -1,204 +1,771 @@
-<!DOCTYPE html>
-<html lang="en">
+import:
+    - https://www.nextzen.org/carto/refill-style/11/refill-style.zip
+    - https://burritojustice.github.io/map-assets/demo.yaml
+    
+global:
+    # search_query: YMCA
+    # lat: '38.0293'
+    # lon: '-78.4767'
+    lat: 30.45064
+    lon: -91.1266
+    radius: '1000'
+    name1: 'Robert E. Lee'
+    name2: Jefferson Davis
+    street_color:  |
+        function(feature){
+            var name
+            if (feature.name)
+                {name = feature.name}
+            else {name = ''}
+            var color = 'lightgrey'
+            if (
+                name.match(/Beauregard/i) || 
+                name.match(/Gray Coat/i) || 
+                name.match(/Rebel/i) ||
+                name.match(/Monument Ave/i ||
+                name.match(/Gen Sterling Price/i)  || 
+                name.match(/Gen Ashley/i)  || 
+                name.match(/General Taylor/i)  || 
+                name.match(/General Scott/i)  || 
+                name.match(/Polk/i)  || 
+                name.match(/General Ewell/i)  || 
+                name.match(/General Forrest/i)  || 
+                name.match(/Pickett/i)  || 
+                name.match(/Mouton/i)  || 
+                name.match(/Bragg/i)  || 
+                name.match(/Kirby Smith/i)  || 
+                name.match(/Longstreet/i)  || 
+                name.match(/Jeb Stuart/i)
+                )
+            ) {
+               color = 'blue'
+                }
+            if (
+                name.match(/Jefferson Davis/i) || 
+                name.match(/Confeder/i) || 
+                name.match(/Jeff Davis/i)
+                ) {
+               color = 'chartreuse'
+                }
+            if (
+                name.match(/Stonewall Jackson/i) || 
+                name.match(/Stonewall/i) || 
+                name.match(/Lee Jackson/i) || 
+                name.match(/Nathan Bedford Forrest/i) ||
+                name.match(/Forrest/i) || 
+                name.match(/Nathan Bedford Forrest/i)  || 
+                name.match(/General Jackson/i) ||
+                name.match(/Samuel Cooper/i) ||
+                name.match(/Albert Sidney Johnston/i) ||
+                name.match(/John Hood/i) ||
+                name.match(/John Bell Hood/i) ||
+                name.match(/Joseph Johnston/i) ||
+                name.match(/Joseph E. Johnston/i) ||
+                name.match(/A P Hill/i) ||
+                name.match(/General Hill/i) ||
+                name.match(/Appomattox/i) ||
+                name.match(/Bull Run/i) 
+                
+            ) {
+               color = 'orange'
+                }
+            if (
+                name.match(/Robert E Lee/i) || 
+                name.match(/Robert E. Lee/i) ||
+                name.match(/General Lee/i) ||
+                name.match(/Lee Hwy/i) ||
+                name.match(/Lee St/i) ||
+                name.match(/Lee Ave/i) 
 
-<head>
-    <title>Confederate Streets</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://mapzen.com/js/mapzen.css" />
-    <script src="https://mapzen.com/js/mapzen.min.js"></script>
-<!--     <script src="demo-switcher.js"></script> --> 
-<!--     <link rel="stylesheet" href="demo-controls.css" /> -->
-    <link rel="stylesheet" href="https://mapzen.com/common/styleguide/styles/styleguide.css" />
+                ) {
+               color = 'red'
+                }
+            if (
+                name.match(/Gen Sterling Price/i)  || 
+                name.match(/Gen Ashley/i)  || 
+                name.match(/General Taylor/i)  || 
+                name.match(/General Scott/i)  || 
+                name.match(/General Polk/i)  || 
+                name.match(/General Ewell/i)  || 
+                name.match(/Pickett/i)  || 
+                name.match(/Mouton/i)  || 
+                name.match(/Bragg/i)  || 
+                name.match(/Kirby Smith/i)  || 
+                name.match(/Longstreet/i)  || 
+                name.match(/Jeb Stuart/i) ||
+                name.match(/General Stuart/i) ||
+                name.match(/Pettigrew/i) ||
+                name.match(/George Anderson/i) ||
+                name.match(/Robert Hoke/i) ||
+                name.match(/A S Johnston/i) ||
+                name.match(/Wheeler/i) ||
+                name.match(/Pemberton/i) ||
+                name.match(/Bonham/i) ||
+                name.match(/turner ashby/i) ||
+                name.match(/Walter Taylor/i) ||
+                name.match(/Colonel Taylor/i) ||
+                name.match(/General Cooke/i) ||
+                name.match(/General Kirkland/i) ||
+                name.match(/Cleburn/i) ||
+                name.match(/Breckenridge/i)
+                ) {
+                   color = 'blue'
+                }
+            if (
+                name.match(/Forrestal/i)  ||
+                name.match(/George W/i)  || // Lt. George Washington Lee, Memphis
+                name.match(/Stearnlee/i)  ||
 
-    <style>
-        html,
-        body {
-            margin: 0;
-            padding: 0;
-	    width: 100%;
-	    height: 100%
+                name.match(/Janna Lee/i)
+                ) {
+                   color = 'lightgrey'
+                }
+           
+            return color
+            // wilmington http://www.myreporter.com/2009/09/why-are-all-the-streets-in-pine-valley-named-for-confederates/
         }
-
-        #map {
-            height: 100%;
-            width: 100%;
-/*             position: fixed; */
-/* 	    z-index: -1; */
+    reveal_names: |
+        function(){
+            if (($zoom >= 6) && ($zoom < 8)){
+                return feature.name
+                }
+            if ($zoom > 7){return feature.label}
+            if ($zoom < 6){
+                return ""
+                }
         }
+    reveal_splc_names: |
+        function(){
 
-	#list {
-            text-align: center;
-            bottom: 0%;
-            height: 10%;
-            width: 30%;
-            left: 35%;
-            position: absolute;
-            margin: 0 auto;
-            z-index: 1000;
-            opacity: 0.7;
-            background-color: white;
-            font: 12px arial;
-            text-shadow: 2px 2px #FFFFFF;
-            display: table;
-            padding: 30px
+            if ($zoom > 8)
+                {return feature.feature_name}
+            else {
+                return ""
+                }
         }
+        
+    road_override:
+        lines:
+            color: |
+                function(){ 
+                    return global.street_color(feature)
+                }
+            # width: |
+            #     function(){ 
+            #         var color = global.street_color(feature)
+            #         if (color == 'lightgrey')
+            #             {return '1px'}
+            #         else 
+            #             {return '2px'}
+            #     }
+            width: 1.5px
+            # width: function(){ if ($zoom > 15){ return '2px'}} 
+            # order: 500  
+    draw_dots:
+        draw:
+            __points:
+                collide: false
+                # color: [0, 1, 1, .4]
+                color: |
+                    function(){
+                        if (feature.layer == 'street')
+                        {return 'red'}
+                        else {return 'blue'}
+                    }
+                size: 10px
+                order: 100
+                outline:
+                    color: black
+                    width: 1px
+                text:
+                    optional: true
+                    text_wrap: 20
+                    text_source: global.reveal_names
 
-        #label {
-            text-align: center;
-            top: 0%;
-            height: 10%;
-            width: 30%;
-            left: 35%;
-            position: absolute;
-            margin: 0 auto;
-            z-index: 1000;
-            opacity: 0.7;
-            background-color: white;
-            font: 12px arial;
-            text-shadow: 2px 2px #FFFFFF;
-            display: table;
-            padding: 30px
-        }
+                    font:
+                        stroke:
+                            color: white
+                            width: 3px
+                        # fill: blue
+                        fill: function(){
+                            if (feature.layer == 'street')
+                            {return 'red'}
+                            else {return 'blue'}
+                            }
+                        size: [[6,8px],[14,12px]]
+    road_dots:
+        _points:
+            collide: false
+            color: [1, 0, 0, .7]
+            size: 10px
+            order: 100
+            outline:
+                color: grey
+                width: 1px
+            text:
+                text_wrap: 20
+                text_source: global.reveal_names
+                font:
+                    fill: red
+                    size: [[6,8px],[14,12px]]
+                    stroke:
+                        color: white
+                        width: 2px
 
-        #label p {
-            display: table-cell;
-            vertical-align: middle;
-            text-align: center;
-        }
+styles:
+    _text:
+        base: text
+        blend_order: 3
+    _points:
+        base: points
+        blend_order: 3
+    __points:
+        base: points
+        blend_order: 2
+    _points4:
+        base: points
+        blend_order: 4       
+sources:
+    # osm:
+    #     type: TopoJSON
+    #     url: https://vector.mapzen.com/osm/all/{z}/{x}/{y}.topojson
+    #     url_params:
+    #         api_key: global.geocode_key
+    
+    slpc:
+        type: GeoJSON
+        url: https://gist.githubusercontent.com/burritojustice/2df2e0d7ef8085b0c885978c1b4b0ca7/raw/11f091afde10334f75594cb3840203d4496b955c/confederate_symbols.geojson
+    
+    st:
+        type: GeoJSON
+        url_params:
+            id: street
+            size: 40
+            layers: street
+            text: Robert E. Lee St
+            api_key: global.geocode_key
+        url: https://api.geocode.earth/v1/search?  
+  
+    ave:
+        type: GeoJSON
+        url_params:
+            id: ave
+            size: 40
+            layers: street
+            text: Robert E. Lee Ave
+            api_key: global.geocode_key
+        url: https://api.geocode.earth/v1/search?
 
-        #label h3 {
-            display: table-cell;
-            vertical-align: middle;
-            text-align: center;
-        }
-    </style>
-</head>
+    blvd:
+        type: GeoJSON
+        url_params:
+            id: blvd
+            size: 40
+            layers: street
+            text: Robert E. Lee Blvd
+            api_key: global.geocode_key
+        url: https://api.geocode.earth/v1/search?
+    road:
+        type: GeoJSON
+        url_params:
+            id: road
+            size: 40
+            layers: street
+            text: Robert E. Lee Road
+            api_key: global.geocode_key
+        url: https://api.geocode.earth/v1/search?
+    venue:
+        type: GeoJSON
+        url_params:
+            id: venue
+            size: 40
+            layers: venue
+            text: Robert E. Lee Road
+            api_key: global.geocode_key
+        url: https://api.geocode.earth/v1/search?
 
-<body>
-	<script src="demo-switcher.js"></script>
-    	<div class="project-demo">
+    venue_virginia:
+        type: GeoJSON
+        url: https://api.geocode.earth/v1/search?
+        url_params:
+            id: va
+            size: 40
+            text: robert e lee
+            layers: venue,street
+            boundary.rect.min_lat: 36.540759
+            boundary.rect.min_lon: -83.675395
+            boundary.rect.max_lat: 39.466012
+            boundary.rect.max_lon: -75.166435
+            api_key: global.geocode_key
+    venue_alabama:
+        type: GeoJSON
+        url: https://api.geocode.earth/v1/search?
+        url_params:
+            id: al
+            size: 40
+            text: robert e lee
+            layers: street,venue
+            boundary.rect.min_lat: 30.144425 
+            boundary.rect.min_lon: -88.473227
+            boundary.rect.max_lat: 35.008028
+            boundary.rect.max_lon: -84.888246
+            api_key: global.geocode_key
+    venue_mississippi:
+        type: GeoJSON
+        url: https://api.geocode.earth/v1/search?
+        url_params:
+            id: ms
+            size: 40
+            text: robert e lee
+            layers: venue,street
+            boundary.rect.min_lat: 30.146096
+            boundary.rect.min_lon: -91.655009
+            boundary.rect.max_lat: 34.996099
+            boundary.rect.max_lon: -88.097888
+            api_key: global.geocode_key
+    venue_georgia:
+        type: GeoJSON
+        url: https://api.geocode.earth/v1/search?
+        url_params:
+            id: ga
+            size: 40
+            text: robert e lee
+            layers: venue,street
+            boundary.rect.min_lat: 30.355757
+            boundary.rect.min_lon: -85.605165
+            boundary.rect.max_lat: 35.000659
+            boundary.rect.max_lon: -80.751429
+            api_key: global.geocode_key
+    venue_florida:
+        type: GeoJSON
+        url: https://api.geocode.earth/v1/search?
+        url_params:
+            id: fl
+            size: 40
+            text: robert e lee
+            layers: venue,street
+            boundary.rect.min_lat: 24.396308 
+            boundary.rect.min_lon: -87.634896
+            boundary.rect.max_lat: 31.000968
+            boundary.rect.max_lon: -79.974306
+            api_key: global.geocode_key
+    venue_southcarolina:
+        type: GeoJSON
+        url: https://api.geocode.earth/v1/search?
+        url_params:
+            id: sc
+            size: 40
+            text: robert e lee
+            layers: venue,street
+            boundary.rect.min_lat: 32.033454
+            boundary.rect.min_lon: -83.353928
+            boundary.rect.max_lat: 35.21554
+            boundary.rect.max_lon: -78.499301
+            api_key: global.geocode_key
+    venue_northcarolina:
+        type: GeoJSON
+        url: https://api.geocode.earth/v1/search?
+        url_params:
+            id: nc
+            size: 40
+            text: robert e lee
+            layers: venue,street
+            boundary.rect.min_lat: 33.752878
+            boundary.rect.min_lon: -84.321869
+            boundary.rect.max_lat: 36.588157
+            boundary.rect.max_lon: -75.400119
+            api_key: global.geocode_key
+    venue_tennessee:
+        type: GeoJSON
+        url: https://api.geocode.earth/v1/search?
+        url_params:
+            id: tn
+            size: 40
+            text: robert e lee
+            layers: venue,street
+            boundary.rect.min_lat: 34.982924 
+            boundary.rect.min_lon: -90.310298
+            boundary.rect.max_lat: 36.678255
+            boundary.rect.max_lon: -81.6469
+            api_key: global.geocode_key
+    venue_arkansas:
+        type: GeoJSON
+        url: https://api.geocode.earth/v1/search?
+        url_params:
+            id: ar
+            size: 40
+            text: robert e lee
+            layers: venue,street
+            boundary.rect.min_lat: 33.004106
+            boundary.rect.min_lon: -94.617919
+            boundary.rect.max_lat: 36.678255
+            boundary.rect.max_lon: 36.499749
+            api_key: global.geocode_key
+    venue_texas:
+        type: GeoJSON
+        url: https://api.geocode.earth/v1/search?
+        url_params:
+            id: tx
+            size: 40
+            text: robert e lee
+            layers: venue,street
+            boundary.rect.min_lat: 25.837164
+            boundary.rect.min_lon: -106.645646
+            boundary.rect.max_lat: 36.500704
+            boundary.rect.max_lon: -93.508039
+            api_key: global.geocode_key
+    venue_louisiana:
+        type: GeoJSON
+        url: https://api.geocode.earth/v1/search?
+        url_params:
+            id: la
+            size: 40
+            text: robert e lee
+            layers: venue #venue,street yields fewer results?
+            boundary.rect.min_lat: 28.855127
+            boundary.rect.min_lon: -94.043352
+            boundary.rect.max_lat: 33.019543
+            boundary.rect.max_lon: -88.758388
+            api_key: global.geocode_key
+    streets_louisiana:
+        type: GeoJSON
+        url: https://api.geocode.earth/v1/search?
+        url_params:
+            id: la
+            size: 40
+            text: robert e lee
+            layers: street #venue,street yields fewer results?
+            boundary.rect.min_lat: 28.855127
+            boundary.rect.min_lon: -94.043352
+            boundary.rect.max_lat: 33.019543
+            boundary.rect.max_lon: -88.758388
+            api_key: global.geocode_key
+    _streets_louisiana:
+        type: GeoJSON
+        url: https://gist.githubusercontent.com/burritojustice/f288af352a2b8bd6e52f3f416f885f12/raw/23ebfb724a03a80d342a45fa9da03ed45d96c1c7/louisiana_streets.geojson
+    venue_missouri:
+        type: GeoJSON
+        url: https://api.geocode.earth/v1/search?
+        url_params:
+            id: mo    
+            size: 40
+            text: robert e lee
+            layers: venue,street
+            boundary.rect.min_lat: 35.995683
+            boundary.rect.min_lon: -95.774704
+            boundary.rect.max_lat: 40.61364
+            boundary.rect.max_lon: -89.098968
+            api_key: global.geocode_key            
+    venue_kentucky:
+        type: GeoJSON
+        url: https://api.geocode.earth/v1/search?
+        url_params:
+            id: ky
+            size: 40
+            text: robert e lee
+            layers: venue,street
+            boundary.rect.min_lat: 36.497058
+            boundary.rect.min_lon: -89.571203
+            boundary.rect.max_lat: 39.147732
+            boundary.rect.max_lon: -81.964788
+            api_key: global.geocode_key
+    venue_westvirginia:
+        type: GeoJSON
+        url: https://api.geocode.earth/v1/search?
+        url_params:
+            id: wv
+            size: 40
+            text: robert e lee
+            layers: venue,street
+            boundary.rect.min_lat: 37.20154
+            boundary.rect.min_lon: -82.644591
+            boundary.rect.max_lat: 40.638801
+            boundary.rect.max_lon: -77.719519
+            api_key: global.geocode_key
+    west_coast:
+        type: GeoJSON
+        url: https://api.geocode.earth/v1/search?
+        url_params:
+            id: west
+            size: 40
+            text: robert e lee
+            layers: street
+            boundary.rect.min_lat: 30.528832
+            boundary.rect.min_lon: -124.482003
+            boundary.rect.max_lat: 49.009517
+            boundary.rect.max_lon: -100.131211
+            # boundary.rect.min_lat: 32.528832
+            # boundary.rect.min_lon: -124.482003
+            # boundary.rect.max_lat: 42.009517
+            # boundary.rect.max_lon: -114.131211
+            api_key: global.geocode_key
 
-	    <div id="map"></div>
-	    <div id="label" style="text-align: center; color: red">
-		<p id="text">An incomplete map of the streets (red dots) and things (blue dots) named after Robert E. Lee.<br>
-		    <br>Zoom in to level 14: colored lines show streets named after other Confederates who rebelled with Lee against the United States.<br>
-		    <br>(Street name and POI dots via Mapzen Search. Street name highlights via Mapzen Vector Tiles, Tangram, and regex.)</p>
-	    </div>
-	</div>
-    <div class="demo-controls" id="demo-controls">
-        <div class="demo-control-previous"><i class="fa fa-fw fa-angle-left"></i></div>
-        <ul class="demo-control-list" id="location-list">
-        </ul>
-        <div class="demo-control-next"><i class="fa fa-fw fa-angle-right"></i></div>
-    </div>
-	
-    <script>
-	var demo_sources = [
-		{
-			name: 'Southgate Estates, Lafayette, Louisiana',
-			title: 'Lafayette, LA',
-			index: 0,
-			zoom: 15.7,
-			latlng: {
-			    lat: 32.4613,
-			    lng: -93.6509
-                	},
-			url: 'https://burritojustice.github.io/confederate-streets/index.html#lat=32.4613&lng=-93.6509&z=15.7011',
-			more: '' 
-            	},
-		{
-			name: 'Pine Valley Estates, Wilmington, NC',
-			title: 'Wilmington, NC',
-			index: 1,
-			zoom: 15.275,
-			latlng: {
-			    lat: 34.1881,
-			    lng: -77.8959
-                	},
-			url: 'https://burritojustice.github.io/confederate-streets/index.html#lat=34.1881&lng=-77.8959&z=15.2750'
-            	},	
-		{
-			name: 'Stanley, NC',
-			title: 'Stanley, NC',
-			index: 2,
-			zoom: 16.0844,
-			latlng: {
-			    lat: 35.34578,
-			    lng: -81.08881
-                	},
-			url: 'https://burritojustice.github.io/confederate-streets/index.html#lat=35.34578&lng=-81.08881&z=16.0844'
-            	},
-		{
-			name: 'Alexandria, VA',
-			title: 'Alexandria, VA',
-			index: 3,
-			zoom: 12.0386,
-			latlng: {
-			    lat: 38.8271,
-			    lng: -77.0651
-                	},
-			url: 'https://burritojustice.github.io/confederate-streets/index.html#lat=38.8271&lng=-77.0651&z=12.0386'
-            	},
-		{
-			name: 'Erlanger, KY',
-			title: 'Erlanger, KY',
-			index: 4,
-			zoom: 16.07,
-			latlng: {
-			    lat: 39.05277,
-			    lng: -84.61434
-                	},
-			url: 'https://burritojustice.github.io/confederate-streets/index.html#lat=39.05277&lng=-84.61434&z=16.0677'
-            	},
-		{
-			name: 'Forest Hills, TN',
-			title: 'Forest Hills, TN',
-			index: 5,
-			zoom: 15.192,
-			latlng: {
-			    lat: 36.0652,
-			    lng: -86.8140
-                	},
-			url: 'https://burritojustice.github.io/confederate-streets/index.html#lat=36.0652&lng=-86.8140&z=15.192'
-            	},	
-	]
-        var demoSwitcher = new DemoSwitcher({
-            sources: demo_sources,
-            onClick: function(source) {
-                hashData = source;
-		hint = hashData.hint;
-                map.setView(hashData.latlng, hashData.zoom);
-                //     setMarkerLocation(hashData.latlng);
-                //     fireHashToParent(hashData);
-            }
-        });	
-	    
-        var map = L.Mapzen.map('map', {
-            center: [37.709, -99.348],
-            zoom: 5.054,
-            tangramOptions: {
-//                 scene: 'https://mapzen.com/api/scenes/22/663/resources/scene.yaml'
-		   scene: 'confederate-traitors.yaml'
-            }
-        });
+layers:
+    _slpc:
+        data: {source: slpc}
+        filter: {$zoom: {min: 5}}
+        draw:
+            __points:
+                collide: false
+                color: [0,1,0,0]
+                # color: [0,1,1,0.3]
+                size: 16px
+                # order: 500
+                outline:
+                    # color: [0,1,0,0.2]
+                    color: |
+                        function(){
+                            // if (feature.category.match(/Monument/i)){
+                            //     return [0,1,0,0.2]}
+                            if (feature.category == 'Road / Street / Highway') {return [0,0,1,0.2]}
+                            else {return [0,1,0,0.2]}
+                            }
+                    # color: grey
+                    # color: [0,0,1,0.5]
+                    # color: [0,0,1,0.5]
+                    width: 3px
+                text:
+                    text_source: global.reveal_splc_names
+                    font:
+                        stroke:
+                            color: white
+                            width: 3px
+                        fill: green
+                        # size: 12px
+                        size: [[6,8px],[14,12px]]
+    
+    boundaries:
+        country:
+            filter:
+                id: [299]
+            draw:
+                lines:
+                    color: lightsteelblue
+                    width: 2px
+                    order: 1001
+        region:
+            confederacy:
+                filter:
+                    id: [8021,,8020,8013,8012,8011,8014,8003,8006,8005,8002,8001,8000,7999,7998,7987,7997,7996,7971,7972,7995,7994,7993,7979,7980,7981,7973,7983,7986,,1190,1178,1189]
+                draw:
+                    lines:
+                        color: lightsteelblue
+                        width: 2px
+                        order: 1001
+            # draw:
+            #     lines:
+            #         color: red
+            #         width: 2px
+            #         order: 1000
 
-        L.Mapzen.hash({
-            map: map
-        });
-        var geocoder = L.Mapzen.geocoder('mapzen-ojDtb4R', geocoderOptions);
-        var geocoderOptions = {
-            position: 'bottomleft'
-        };
-        geocoder.addTo(map);
+    roads:
+        data: {source: mapzen}
+        # filter: 
+        #     name:
+        #         - Robert E. Lee Memorial Bridge
+        early:
+            draw: global.road_override
 
-        map.on('zoom', function(e) {
-            document.getElementById("label").style.visibility = "hidden"
-        })
-        map.on('move', function(e) {
-            document.getElementById("label").style.visibility = "hidden"
-        })
-    </script>
-</body>
+        highway:
+            draw: global.road_override
 
-</html>
+        minor_road:
+            # draw: global.road_override
+
+            primary:
+                draw: global.road_override
+
+                early:
+                    draw: global.road_override
+            residential:
+                draw: global.road_override
+            # round:
+            #     draw: global.road_override
+        major_road:
+            trunk_primary:
+                draw: global.road_override
+
+                routes:
+                    draw: global.road_override
+
+            trunk:
+                draw: global.road_override
+
+            primary:
+                early:
+                    draw: global.road_override
+
+            secondary:
+                early:
+                    draw: global.road_override
+                routes:
+                    draw: global.road_override
+
+            tertiary:
+                # draw: global.road_override
+
+                early:
+                    draw: global.road_override
+                routes: 
+                    draw: global.road_override
+
+    _st_national:
+        data: { source: st }
+        filter: {$zoom: {max: 15 }}
+        draw: global.road_dots
+    _ave_national:
+        data: { source: ave }
+        filter: {$zoom: {max: 15 }}
+        draw: global.road_dots
+
+    _blvd_national:
+        data: { source: blvd }
+        filter: {$zoom: {max: 15 }}
+        draw: global.road_dots
+
+    _road_national:
+        data: { source: road }
+        filter: {$zoom: {max: 15 }}
+        draw: global.road_dots
+
+    _venue_national:
+        data: { source: venue }
+        dots:
+            draw:
+                _points:
+                    collide: false
+                    color: [1, 0, 1, 0.5] 
+                    size: 10px # change to 18px from 12px and opacity to 0 to show diff between nation and local search
+                    order: 100
+                    outline:
+                        color: [0,0,0,0.5]
+                        width: 1px
+                    # outline: #enable to see national vs local results
+                    #     color: blue
+                    #     width: 0.5px
+                    text:
+                        text_source: global.reveal_names
+                        # text_wrap: 25
+                        collide: false
+                        font:
+                            stroke:
+                                color: white
+                                width: 3px
+                            fill: blue
+                            size: [[6,8px],[14,12px]]
+                        # optional: true
+    _venue_virginia:
+        data: { source: venue_virginia }
+        filter:
+            all:
+                - confidence: {min: 0.653}
+                - $zoom: {max: 15}
+        dots: global.draw_dots
+    _venue_alabama:
+        data: { source: venue_alabama }
+        filter:
+            all:
+                - confidence: {min: 0.67}
+                - $zoom: {max: 15}
+        dots: global.draw_dots
+    _venue_mississippi:
+        data: { source: venue_mississippi }
+        filter:
+            all:
+                - confidence: {min: 0.67}
+                - $zoom: {max: 15}
+        dots: global.draw_dots
+    _venue_georgia:
+        data: { source: venue_georgia }
+        filter:
+            all:
+                - confidence: {min: 0.67}
+                - $zoom: {max: 15}
+        dots: global.draw_dots
+    _venue_florida:
+        data: { source: venue_florida }
+        filter:
+            all:
+                - confidence: {min: 0.67}
+                - $zoom: {max: 15}
+        dots: global.draw_dots
+    _venue_southcarolina:
+        data: { source: venue_southcarolina }
+        filter:
+            all:
+                - confidence: {min: 0.67}
+                - $zoom: {max: 15}
+        dots: global.draw_dots
+    _venue_northcarolina:
+        data: { source: venue_northcarolina }
+        filter:
+            all:
+                - confidence: {min: 0.67}
+                - $zoom: {max: 15}
+        dots: global.draw_dots
+    _venue_tennessee:
+        data: { source: venue_tennessee }
+        filter:
+            all:
+                - confidence: {min: 0.67}
+                - $zoom: {max: 15}
+        dots: global.draw_dots
+    _venue_arkansas:
+        data: { source: venue_arkansas }
+        filter:
+            all:
+                - confidence: {min: 0.67}
+                - $zoom: {max: 15}
+        dots: global.draw_dots
+    _venue_texas:
+        data: { source: venue_texas }
+        filter:
+            all:
+                - confidence: {min: 0.67}
+                - $zoom: {max: 15}
+        dots: global.draw_dots
+    _venue_louisiana:
+        data: { source: venue_louisiana }
+        filter:
+            all:
+                - confidence: {min: 0.67}
+                - $zoom: {max: 15}
+        dots: global.draw_dots
+    _streets_louisiana:
+        data: { source: _streets_louisiana }
+        filter:
+            all:
+                - confidence: {min: 0.67}
+                - $zoom: {max: 15}
+        dots: global.draw_dots
+
+# border states
+
+    _venue_missouri:
+        data: { source: venue_missouri }
+        filter:
+            all:
+                - confidence: {min: 0.67}
+                - $zoom: {max: 15}
+        dots: global.draw_dots        
+    _venue_kentucky:
+        data: { source: venue_kentucky }
+        filter:
+            all:
+                - confidence: {min: 0.67}
+                - $zoom: {max: 15}
+        dots: global.draw_dots
+    _venue_westvirginia:
+        data: { source: venue_westvirginia }
+        filter:
+            all:
+                - confidence: {min: 0.67}
+                - $zoom: {max: 15}
+        dots: global.draw_dots
+    _west_coast:
+        data: { source: west_coast }
+        filter:
+            all:
+                - confidence: {min: 0.8}
+                - $zoom: {max: 15}
+        dots: global.draw_dots
