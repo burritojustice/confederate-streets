@@ -1,3 +1,5 @@
+global:
+    sdk_api_key: DpCrhQqsR2igQPEINRTfcw
 import:
 
     # - https://tilezen.org/carto/bubble-wrap-style/6/bubble-wrap-style.zip
@@ -6,7 +8,7 @@ import:
     # - https://tilezen.org/carto/refill-style/8/themes/detail-11.zip
     # - https://tilezen.org/carto/refill-style/8/themes/label-11.zip
 
-    - https://mapzen-assets.s3.amazonaws.com/resources/demo.yaml
+    # - https://mapzen-assets.s3.amazonaws.com/resources/demo.yaml
     
 
 global:
