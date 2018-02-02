@@ -244,7 +244,7 @@ sources:
             layers: street
             text: Robert E. Lee St
             api_key: global.geocode_key
-        url: https://geocode.earth/v1/search?  
+        url: https://api.geocode.earth/v1/search?  
   
     ave:
         type: GeoJSON
@@ -254,7 +254,7 @@ sources:
             layers: street
             text: Robert E. Lee Ave
             api_key: global.geocode_key
-        url: https://geocode.earth/v1/search?
+        url: https://api.geocode.earth/v1/search?
 
     blvd:
         type: GeoJSON
@@ -264,7 +264,7 @@ sources:
             layers: street
             text: Robert E. Lee Blvd
             api_key: global.geocode_key
-        url: https://geocode.earth/v1/search?
+        url: https://api.geocode.earth/v1/search?
     road:
         type: GeoJSON
         url_params:
@@ -273,7 +273,7 @@ sources:
             layers: street
             text: Robert E. Lee Road
             api_key: global.geocode_key
-        url: https://geocode.earth/v1/search?
+        url: https://api.geocode.earth/v1/search?
     venue:
         type: GeoJSON
         url_params:
@@ -282,11 +282,11 @@ sources:
             layers: venue
             text: Robert E. Lee Road
             api_key: global.geocode_key
-        url: https://geocode.earth/v1/search?
+        url: https://api.geocode.earth/v1/search?
 
     venue_virginia:
         type: GeoJSON
-        url: https://geocode.earth/v1/search?
+        url: https://api.geocode.earth/v1/search?
         url_params:
             id: va
             size: 40
@@ -299,7 +299,7 @@ sources:
             api_key: global.geocode_key
     venue_alabama:
         type: GeoJSON
-        url: https://geocode.earth/v1/search?
+        url: https://api.geocode.earth/v1/search?
         url_params:
             id: al
             size: 40
@@ -312,7 +312,7 @@ sources:
             api_key: global.geocode_key
     venue_mississippi:
         type: GeoJSON
-        url: https://geocode.earth/v1/search?
+        url: https://api.geocode.earth/v1/search?
         url_params:
             id: ms
             size: 40
@@ -325,7 +325,7 @@ sources:
             api_key: global.geocode_key
     venue_georgia:
         type: GeoJSON
-        url: https://geocode.earth/v1/search?
+        url: https://api.geocode.earth/v1/search?
         url_params:
             id: ga
             size: 40
@@ -338,7 +338,7 @@ sources:
             api_key: global.geocode_key
     venue_florida:
         type: GeoJSON
-        url: https://geocode.earth/v1/search?
+        url: https://api.geocode.earth/v1/search?
         url_params:
             id: fl
             size: 40
@@ -351,7 +351,7 @@ sources:
             api_key: global.geocode_key
     venue_southcarolina:
         type: GeoJSON
-        url: https://geocode.earth/v1/search?
+        url: https://api.geocode.earth/v1/search?
         url_params:
             id: sc
             size: 40
@@ -364,7 +364,7 @@ sources:
             api_key: global.geocode_key
     venue_northcarolina:
         type: GeoJSON
-        url: https://geocode.earth/v1/search?
+        url: https://api.geocode.earth/v1/search?
         url_params:
             id: nc
             size: 40
@@ -377,7 +377,7 @@ sources:
             api_key: global.geocode_key
     venue_tennessee:
         type: GeoJSON
-        url: https://geocode.earth/v1/search?
+        url: https://api.geocode.earth/v1/search?
         url_params:
             id: tn
             size: 40
@@ -390,7 +390,7 @@ sources:
             api_key: global.geocode_key
     venue_arkansas:
         type: GeoJSON
-        url: https://geocode.earth/v1/search?
+        url: https://api.geocode.earth/v1/search?
         url_params:
             id: ar
             size: 40
@@ -403,7 +403,7 @@ sources:
             api_key: global.geocode_key
     venue_texas:
         type: GeoJSON
-        url: https://geocode.earth/v1/search?
+        url: https://api.geocode.earth/v1/search?
         url_params:
             id: tx
             size: 40
@@ -416,7 +416,7 @@ sources:
             api_key: global.geocode_key
     venue_louisiana:
         type: GeoJSON
-        url: https://geocode.earth/v1/search?
+        url: https://api.geocode.earth/v1/search?
         url_params:
             id: la
             size: 40
@@ -429,7 +429,7 @@ sources:
             api_key: global.geocode_key
     streets_louisiana:
         type: GeoJSON
-        url: https://geocode.earth/v1/search?
+        url: https://api.geocode.earth/v1/search?
         url_params:
             id: la
             size: 40
@@ -445,7 +445,7 @@ sources:
         url: https://gist.githubusercontent.com/burritojustice/f288af352a2b8bd6e52f3f416f885f12/raw/23ebfb724a03a80d342a45fa9da03ed45d96c1c7/louisiana_streets.geojson
     venue_missouri:
         type: GeoJSON
-        url: https://geocode.earth/v1/search?
+        url: https://api.geocode.earth/v1/search?
         url_params:
             id: mo    
             size: 40
@@ -458,7 +458,7 @@ sources:
             api_key: global.geocode_key            
     venue_kentucky:
         type: GeoJSON
-        url: https://geocode.earth/v1/search?
+        url: https://api.geocode.earth/v1/search?
         url_params:
             id: ky
             size: 40
@@ -471,7 +471,7 @@ sources:
             api_key: global.geocode_key
     venue_westvirginia:
         type: GeoJSON
-        url: https://geocode.earth/v1/search?
+        url: https://api.geocode.earth/v1/search?
         url_params:
             id: wv
             size: 40
@@ -484,7 +484,7 @@ sources:
             api_key: global.geocode_key
     west_coast:
         type: GeoJSON
-        url: https://geocode.earth/v1/search?
+        url: https://api.geocode.earth/v1/search?
         url_params:
             id: west
             size: 40
