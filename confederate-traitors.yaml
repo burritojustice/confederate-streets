@@ -1,16 +1,7 @@
-global:
-    sdk_api_key: DpCrhQqsR2igQPEINRTfcw
 import:
-
-    # - https://tilezen.org/carto/bubble-wrap-style/6/bubble-wrap-style.zip
-    # - https://tilezen.org/carto/refill-style/8/refill-style.zip
     - https://www.nextzen.org/carto/refill-style/11/refill-style.zip
-    # - https://tilezen.org/carto/refill-style/8/themes/detail-11.zip
-    # - https://tilezen.org/carto/refill-style/8/themes/label-11.zip
-
-    # - https://mapzen-assets.s3.amazonaws.com/resources/demo.yaml
+    - https://burritojustice.github.io/map-assets/demo.yaml
     
-
 global:
     # search_query: YMCA
     # lat: '38.0293'
@@ -239,7 +230,7 @@ sources:
     #     type: TopoJSON
     #     url: https://vector.mapzen.com/osm/all/{z}/{x}/{y}.topojson
     #     url_params:
-    #         api_key: global.sdk_mapzen_api_key
+    #         api_key: global.geocode_key
     
     slpc:
         type: GeoJSON
@@ -252,9 +243,8 @@ sources:
             size: 40
             layers: street
             text: Robert E. Lee St
-            api_key: global.sdk_mapzen_api_key
-
-        url: https://search.mapzen.com/v1/search?  
+            api_key: global.geocode_key
+        url: https://geocode.earth/v1/search?  
   
     ave:
         type: GeoJSON
@@ -263,9 +253,8 @@ sources:
             size: 40
             layers: street
             text: Robert E. Lee Ave
-            api_key: global.sdk_mapzen_api_key
-
-        url: https://search.mapzen.com/v1/search?
+            api_key: global.geocode_key
+        url: https://geocode.earth/v1/search?
 
     blvd:
         type: GeoJSON
@@ -274,8 +263,8 @@ sources:
             size: 40
             layers: street
             text: Robert E. Lee Blvd
-            api_key: global.sdk_mapzen_api_key
-        url: https://search.mapzen.com/v1/search?
+            api_key: global.geocode_key
+        url: https://geocode.earth/v1/search?
     road:
         type: GeoJSON
         url_params:
@@ -283,8 +272,8 @@ sources:
             size: 40
             layers: street
             text: Robert E. Lee Road
-            api_key: global.sdk_mapzen_api_key
-        url: https://search.mapzen.com/v1/search?
+            api_key: global.geocode_key
+        url: https://geocode.earth/v1/search?
     venue:
         type: GeoJSON
         url_params:
@@ -292,12 +281,12 @@ sources:
             size: 40
             layers: venue
             text: Robert E. Lee Road
-            api_key: global.sdk_mapzen_api_key
-        url: https://search.mapzen.com/v1/search?
+            api_key: global.geocode_key
+        url: https://geocode.earth/v1/search?
 
     venue_virginia:
         type: GeoJSON
-        url: https://search.mapzen.com/v1/search?
+        url: https://geocode.earth/v1/search?
         url_params:
             id: va
             size: 40
@@ -307,10 +296,10 @@ sources:
             boundary.rect.min_lon: -83.675395
             boundary.rect.max_lat: 39.466012
             boundary.rect.max_lon: -75.166435
-            api_key: global.sdk_mapzen_api_key
+            api_key: global.geocode_key
     venue_alabama:
         type: GeoJSON
-        url: https://search.mapzen.com/v1/search?
+        url: https://geocode.earth/v1/search?
         url_params:
             id: al
             size: 40
@@ -320,10 +309,10 @@ sources:
             boundary.rect.min_lon: -88.473227
             boundary.rect.max_lat: 35.008028
             boundary.rect.max_lon: -84.888246
-            api_key: global.sdk_mapzen_api_key
+            api_key: global.geocode_key
     venue_mississippi:
         type: GeoJSON
-        url: https://search.mapzen.com/v1/search?
+        url: https://geocode.earth/v1/search?
         url_params:
             id: ms
             size: 40
@@ -333,10 +322,10 @@ sources:
             boundary.rect.min_lon: -91.655009
             boundary.rect.max_lat: 34.996099
             boundary.rect.max_lon: -88.097888
-            api_key: global.sdk_mapzen_api_key
+            api_key: global.geocode_key
     venue_georgia:
         type: GeoJSON
-        url: https://search.mapzen.com/v1/search?
+        url: https://geocode.earth/v1/search?
         url_params:
             id: ga
             size: 40
@@ -346,10 +335,10 @@ sources:
             boundary.rect.min_lon: -85.605165
             boundary.rect.max_lat: 35.000659
             boundary.rect.max_lon: -80.751429
-            api_key: global.sdk_mapzen_api_key
+            api_key: global.geocode_key
     venue_florida:
         type: GeoJSON
-        url: https://search.mapzen.com/v1/search?
+        url: https://geocode.earth/v1/search?
         url_params:
             id: fl
             size: 40
@@ -359,10 +348,10 @@ sources:
             boundary.rect.min_lon: -87.634896
             boundary.rect.max_lat: 31.000968
             boundary.rect.max_lon: -79.974306
-            api_key: global.sdk_mapzen_api_key
+            api_key: global.geocode_key
     venue_southcarolina:
         type: GeoJSON
-        url: https://search.mapzen.com/v1/search?
+        url: https://geocode.earth/v1/search?
         url_params:
             id: sc
             size: 40
@@ -372,10 +361,10 @@ sources:
             boundary.rect.min_lon: -83.353928
             boundary.rect.max_lat: 35.21554
             boundary.rect.max_lon: -78.499301
-            api_key: global.sdk_mapzen_api_key
+            api_key: global.geocode_key
     venue_northcarolina:
         type: GeoJSON
-        url: https://search.mapzen.com/v1/search?
+        url: https://geocode.earth/v1/search?
         url_params:
             id: nc
             size: 40
@@ -385,10 +374,10 @@ sources:
             boundary.rect.min_lon: -84.321869
             boundary.rect.max_lat: 36.588157
             boundary.rect.max_lon: -75.400119
-            api_key: global.sdk_mapzen_api_key
+            api_key: global.geocode_key
     venue_tennessee:
         type: GeoJSON
-        url: https://search.mapzen.com/v1/search?
+        url: https://geocode.earth/v1/search?
         url_params:
             id: tn
             size: 40
@@ -398,10 +387,10 @@ sources:
             boundary.rect.min_lon: -90.310298
             boundary.rect.max_lat: 36.678255
             boundary.rect.max_lon: -81.6469
-            api_key: global.sdk_mapzen_api_key
+            api_key: global.geocode_key
     venue_arkansas:
         type: GeoJSON
-        url: https://search.mapzen.com/v1/search?
+        url: https://geocode.earth/v1/search?
         url_params:
             id: ar
             size: 40
@@ -411,10 +400,10 @@ sources:
             boundary.rect.min_lon: -94.617919
             boundary.rect.max_lat: 36.678255
             boundary.rect.max_lon: 36.499749
-            api_key: global.sdk_mapzen_api_key
+            api_key: global.geocode_key
     venue_texas:
         type: GeoJSON
-        url: https://search.mapzen.com/v1/search?
+        url: https://geocode.earth/v1/search?
         url_params:
             id: tx
             size: 40
@@ -424,10 +413,10 @@ sources:
             boundary.rect.min_lon: -106.645646
             boundary.rect.max_lat: 36.500704
             boundary.rect.max_lon: -93.508039
-            api_key: global.sdk_mapzen_api_key
+            api_key: global.geocode_key
     venue_louisiana:
         type: GeoJSON
-        url: https://search.mapzen.com/v1/search?
+        url: https://geocode.earth/v1/search?
         url_params:
             id: la
             size: 40
@@ -437,10 +426,10 @@ sources:
             boundary.rect.min_lon: -94.043352
             boundary.rect.max_lat: 33.019543
             boundary.rect.max_lon: -88.758388
-            api_key: global.sdk_mapzen_api_key
+            api_key: global.geocode_key
     streets_louisiana:
         type: GeoJSON
-        url: https://search.mapzen.com/v1/search?
+        url: https://geocode.earth/v1/search?
         url_params:
             id: la
             size: 40
@@ -450,13 +439,13 @@ sources:
             boundary.rect.min_lon: -94.043352
             boundary.rect.max_lat: 33.019543
             boundary.rect.max_lon: -88.758388
-            api_key: global.sdk_mapzen_api_key
+            api_key: global.geocode_key
     _streets_louisiana:
         type: GeoJSON
         url: https://gist.githubusercontent.com/burritojustice/f288af352a2b8bd6e52f3f416f885f12/raw/23ebfb724a03a80d342a45fa9da03ed45d96c1c7/louisiana_streets.geojson
     venue_missouri:
         type: GeoJSON
-        url: https://search.mapzen.com/v1/search?
+        url: https://geocode.earth/v1/search?
         url_params:
             id: mo    
             size: 40
@@ -466,10 +455,10 @@ sources:
             boundary.rect.min_lon: -95.774704
             boundary.rect.max_lat: 40.61364
             boundary.rect.max_lon: -89.098968
-            api_key: global.sdk_mapzen_api_key            
+            api_key: global.geocode_key            
     venue_kentucky:
         type: GeoJSON
-        url: https://search.mapzen.com/v1/search?
+        url: https://geocode.earth/v1/search?
         url_params:
             id: ky
             size: 40
@@ -479,10 +468,10 @@ sources:
             boundary.rect.min_lon: -89.571203
             boundary.rect.max_lat: 39.147732
             boundary.rect.max_lon: -81.964788
-            api_key: global.sdk_mapzen_api_key
+            api_key: global.geocode_key
     venue_westvirginia:
         type: GeoJSON
-        url: https://search.mapzen.com/v1/search?
+        url: https://geocode.earth/v1/search?
         url_params:
             id: wv
             size: 40
@@ -492,10 +481,10 @@ sources:
             boundary.rect.min_lon: -82.644591
             boundary.rect.max_lat: 40.638801
             boundary.rect.max_lon: -77.719519
-            api_key: global.sdk_mapzen_api_key
+            api_key: global.geocode_key
     west_coast:
         type: GeoJSON
-        url: https://search.mapzen.com/v1/search?
+        url: https://geocode.earth/v1/search?
         url_params:
             id: west
             size: 40
@@ -509,7 +498,7 @@ sources:
             # boundary.rect.min_lon: -124.482003
             # boundary.rect.max_lat: 42.009517
             # boundary.rect.max_lon: -114.131211
-            api_key: global.sdk_mapzen_api_key
+            api_key: global.geocode_key
 
 layers:
     _slpc:
