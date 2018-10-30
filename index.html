@@ -173,7 +173,7 @@
             }
         });	
 	    
-        var map = L.Mapzen.map('map', {
+        var map = L.Nextzen.map('map', {
             center: [37.709, -99.348],
             zoom: 5.054,
             tangramOptions: {
@@ -182,10 +182,10 @@
             }
         });
 
-        L.Mapzen.hash({
+        L.Nextzen.hash({
             map: map
         });
-        var geocoder = L.Mapzen.geocoder('mapzen-ojDtb4R', geocoderOptions);
+        var geocoder = L.Nextzen.geocoder('mapzen-ojDtb4R', geocoderOptions);
         var geocoderOptions = {
             position: 'bottomleft'
         };
